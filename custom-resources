@@ -1,5 +1,6 @@
 # This section includes base Calico installation configuration.
 # For more information, see: https://docs.projectcalico.org/v3.15/reference/installation/api#operator.tigera.io/v1.Installation
+# https://docs.projectcalico.org/getting-started/kubernetes/quickstart
 apiVersion: operator.tigera.io/v1
 kind: Installation
 metadata:
@@ -9,7 +10,7 @@ spec:
   calicoNetwork:
     # Note: The ipPools section cannot be modified post-install.
     ipPools:
-    - blockSize: 26
+    - blockSize: 122
       cidr: 10.244.0.0/16
       encapsulation: VXLANCrossSubnet
       natOutgoing: Enabled
