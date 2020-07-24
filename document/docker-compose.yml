@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  redis:
+    image: redis:6.0.5
+    networks:
+      java-net:
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - "node.hostname==ld1"
+  mysql:
+    image: mysql:8.0.20
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max_connections=1000 --default-time_zone='+0:00'
+    networks:
+      java-net:
+    volumes:
+      - mysql8-data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=xiefei
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - "node.hostname==ld1"
+networks:
+  java-net:
+    name: java-net
+volumes:
+  redis-data:
+    name: redis-data
+  mysql8-data:
+    name: mysql8-data
