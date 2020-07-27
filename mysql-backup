@@ -1,1 +1,2 @@
-FROM ubuntu:20.04
+FROM mysql:8.0.21
+RUN mkdir /data
