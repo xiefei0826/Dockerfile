@@ -1,2 +1,6 @@
-FROM mysql:8.0.21
-RUN mkdir /data
+FROM ubuntu:18.04
+COPY ./sources.list /etc/apt/sources.list
+RUN  apt update && \
+    apt install  mysql-client -y  && \
+    mkdir /data && \
+    apt clean
