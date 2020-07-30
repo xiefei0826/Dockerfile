@@ -1,1 +1,1 @@
-mysqldump -uroot -pxiefei -A -h datacentre-mysql >/home/$(date +%Y-%m-%d-%H-%M).sql
+mysqldump -uroot -pxiefei -A -h datacentre-mysql >/data/$(date +%Y-%m-%d-%H-%M).sql
