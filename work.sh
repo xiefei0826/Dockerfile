@@ -1,1 +1,2 @@
-mysqldump -uroot -pxiefei -A -h datacentre-mysql >/data/$(date +%Y-%m-%d-%H-%M).sql
+mysqldump -uroot -pxiefei -A -h datacentre-mysql >/data/$(date +%F).sql
+find /data -mtime +30 -type f -name '*.sql' | xargs rm -rf
